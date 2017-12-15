@@ -16,8 +16,8 @@ object Orderbook {
   )
 }
 
-case class Orderbook(bids : immutable.TreeMap[BigDecimal,BigDecimal],
-                     asks : immutable.TreeMap[BigDecimal,BigDecimal]) {
+case class Orderbook private(bids : immutable.TreeMap[BigDecimal,BigDecimal],
+                             asks : immutable.TreeMap[BigDecimal,BigDecimal]) {
   import Orderbook._
   def isCrossed : Boolean = bids.nonEmpty && asks.nonEmpty && bids.head._1 >= asks.head._1
 
